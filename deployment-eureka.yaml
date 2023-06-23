@@ -26,8 +26,8 @@ spec:
 apiVersion: v1 # Kubernetes API version
 kind: Service # Kubernetes resource kind we are creating
 metadata: # Metadata of the resource kind we are creating
-  #name: eureka-service
-  name: eureka.default.svc.cluster.local
+  name: eureka
+  #name: eureka.default.svc.cluster.local
 spec:
   selector:
     app: spring-boot-k8s
