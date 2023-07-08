@@ -37,8 +37,3 @@ spec:
       targetPort: 30001 # The port exposed by the service
       nodePort: 30001
   type: NodePort # type of the service.
-subsets:
-  - addresses:
-      - ip: 192.168.77.176
-    ports:
-      - port: 30001
