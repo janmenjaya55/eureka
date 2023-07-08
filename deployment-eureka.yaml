@@ -35,5 +35,5 @@ spec:
     - protocol: "TCP"
       port: 30001 # The port that the service is running on in the cluster
       targetPort: 30001 # The port exposed by the service
-      nodePort: 30001
+      nodePort: 32553
   type: NodePort # type of the service.
