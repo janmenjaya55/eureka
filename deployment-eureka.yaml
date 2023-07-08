@@ -1,39 +1,21 @@
 apiVersion: apps/v1
-kind: Deployment # Kubernetes resource kind we are creating
+kind: Deployment
 metadata:
   name: eureka
+  labels:
+    app: eureka
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: spring-boot-k8s
-  replicas: 1 # Number of replicas that will be created for this deployment
+      app: eureka
   template:
     metadata:
       labels:
-        app: spring-boot-k8s
+        app: eureka
     spec:
       containers:
-        - name: eureka
-          image: janmenjaya/eureka:latest # Image that will be used to containers in the cluster
-          #imagePullPolicy: IfNotPresent
-          imagePullPolicy: Always
-          ports:
-            - containerPort: 30001 # The port that the container is running on in the cluster
-
-
----
-
-apiVersion: v1 # Kubernetes API version
-kind: Service # Kubernetes resource kind we are creating
-metadata: # Metadata of the resource kind we are creating
-  name: eureka
-  #name: eureka.default.svc.cluster.local
-spec:
-  selector:
-    app: spring-boot-k8s
-  ports:
-    - protocol: "TCP"
-      port: 30001 # The port that the service is running on in the cluster
-      targetPort: 30001 # The port exposed by the service
-      nodePort: 30001
-  type: NodePort # type of the service.
+      - name: eureka
+        image: janmenjaya/eureka
+        ports:
+        - containerPort: 30001
