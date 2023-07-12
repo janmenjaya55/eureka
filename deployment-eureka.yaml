@@ -5,7 +5,7 @@ metadata:
   labels:
     app: eureka
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: eureka
@@ -18,7 +18,12 @@ spec:
       - name: eureka
         image: janmenjaya/eureka
         ports:
-        - containerPort: 30001
+        - containerPort: 30001  
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0    
 
 ---
 
