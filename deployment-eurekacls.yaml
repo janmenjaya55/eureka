@@ -30,20 +30,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: eureka
   name: eureka
-  namespace: default
 spec:
-  clusterIP: 10.110.193.60
-  clusterIPs:
-  - 10.110.193.60
-  internalTrafficPolicy: Cluster
-  ports:
-  - port: 30001
-    protocol: TCP
-    targetPort: 30001
   selector:
     app: eureka
-  sessionAffinity: None
-  type: ClusterIP
+  ports:
+    - port: 30001
+      targetPort: 32094
+  type: LoadBalancer
+  loadBalancerIP: 192.168.56.240
