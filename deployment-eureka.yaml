@@ -5,7 +5,7 @@ metadata:
   labels:
     app: eureka
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: eureka
@@ -23,4 +23,4 @@ spec:
     type: RollingUpdate
     rollingUpdate:
       maxSurge: 1
-      maxUnavailable: 0    
+      maxUnavailable: 0  
