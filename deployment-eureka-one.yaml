@@ -1,1 +1,26 @@
-
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eureka-one
+  labels:
+    app: eureka-one
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eureka-one
+  template:
+    metadata:
+      labels:
+        app: eureka-one
+    spec:
+      containers:
+      - name: eureka-one
+        image: janmenjaya/eureka
+        ports:
+        - containerPort: 30001  
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
